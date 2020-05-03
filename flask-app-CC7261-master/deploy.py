@@ -19,10 +19,13 @@ class lavagem:
         return self.solucao
 app = Flask(__name__)
 cont=0
-
-@app.route("/lavagem")
+global data2
+@app.route("/lavagem",methods=['GET'])
 def teste():
 #    http://127.0.0.1:5000/  https:/test-flask-fei.herokuapp.com/secador
+    return data2
+@app.route("/lavagem",methods=['POST'])
+def postagem():
     data = request.get_json()
     tanque1=lavagem(1)
     tanque2=lavagem(2)
@@ -33,7 +36,7 @@ def teste():
     tanque3.get_solucao(tanque2.devolve_solucao())
     data2 = tanque3.devolve_solucao()
     req = requests.post('https://test-flask-fei.herokuapp.com/secador', json = data2, headers = {"Content-Type": "application/json"})
-    return json.dumps(data2)
+    
 def create_app():
     global app
     return app
