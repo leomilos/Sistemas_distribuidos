@@ -36,6 +36,7 @@ def postagem():
     tanque2.get_solucao(tanque1.devolve_solucao())
     tanque3.get_solucao(tanque2.devolve_solucao())
     global data2
+    print(data2)
     data2 = tanque3.devolve_solucao()
     req = requests.post('https://test-flask-fei.herokuapp.com/secador', json = data2, headers = {"Content-Type": "application/json"})
     return data2
