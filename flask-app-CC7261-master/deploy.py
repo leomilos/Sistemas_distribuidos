@@ -38,3 +38,4 @@ def teste():
 #    req = requests.post('https://tanquesistemas.herokuapp.com/biodiesel', json = request, headers = {"Content-Type": "application/json"})
 #    r = requests.post("https:/test-flask-fei.herokuapp.com/secador")
 #    r.json(data2)
+    return data2
