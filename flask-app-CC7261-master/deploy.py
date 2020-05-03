@@ -23,14 +23,12 @@ cont=0
 @app.route("/lavagem")
 def teste():
 #    http://127.0.0.1:5000/  https:/test-flask-fei.herokuapp.com/secador
-    temp = requests.get('https://cc7261-app-modulo-decantador.herokuapp.com/')
-    data = json.loads(temp.text)
-    print(data)
+    data = request.get_json()
     tanque1=lavagem(1)
     tanque2=lavagem(2)
     tanque3=lavagem(3)
     #pega solucao de outro codigo e envia para trata_solucao ou outro tank
-    tanque1.get_solucao(data['decantador']['solucaolavagem'])
+    tanque1.get_solucao(data['solucaolavagem'])
     tanque2.get_solucao(tanque1.devolve_solucao())
     tanque3.get_solucao(tanque2.devolve_solucao())
     data2 = tanque3.devolve_solucao()
