@@ -23,7 +23,7 @@ global data2
 @app.route("/lavagem",methods=['GET'])
 def teste():
 #    http://127.0.0.1:5000/  https:/test-flask-fei.herokuapp.com/secador
-    return "FUNCIONOU"
+    return json.dumps(data2)
 @app.route("/lavagem",methods=['POST'])
 def postagem():
     data = request.get_json()
