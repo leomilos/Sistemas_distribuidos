@@ -33,10 +33,7 @@ def teste():
     tanque3.get_solucao(tanque2.devolve_solucao())
     data2 = tanque3.devolve_solucao()
     req = requests.post('https://test-flask-fei.herokuapp.com/secador', json = data2, headers = {"Content-Type": "application/json"})
-#    req = requests.post('https://tanquesistemas.herokuapp.com/biodiesel', json = request, headers = {"Content-Type": "application/json"})
-#    r = requests.post("https:/test-flask-fei.herokuapp.com/secador")
-#    r.json(data2)
-    return data2
+    return json.dumps(data2)
 def create_app():
     global app
     return app
