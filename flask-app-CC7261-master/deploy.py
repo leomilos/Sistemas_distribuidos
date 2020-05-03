@@ -14,7 +14,7 @@ class lavagem:
         self.solucao=quantidade*0.97
     def devolve_solucao(self):
         if self.tanque==3:
-             x =  { "solucaolavagem": self.solucao}
+             x =  { "solucao": self.solucao}
              return x
         return self.solucao
 app = Flask(__name__)
