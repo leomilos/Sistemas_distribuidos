@@ -20,7 +20,7 @@ class lavagem:
 app = Flask(__name__)
 cont=0
 
-@app.route("/secador")
+@app.route("/lavagem")
 def teste():
 #    http://127.0.0.1:5000/  https:/test-flask-fei.herokuapp.com/secador
     data = request.get_json()
