@@ -15,22 +15,26 @@ class lavagem:
     def devolve_solucao(self):
         if self.tanque==3:
              x =  { "solucao": self.solucao}
-             return json.dumps(x)
+             return x
         return self.solucao
 app = Flask(__name__)
 cont=0
 
-r = requests.get('https://cc7261-app-modulo-decantador.herokuapp.com/')
-print(r.text)
-tanque1=lavagem(1)
-tanque2=lavagem(2)
-tanque3=lavagem(3)
-data = json.loads(r.text)
-print(data)
-tanque1.get_solucao(data['decantador']['solucaolavagem'])
-tanque2.get_solucao(tanque1.devolve_solucao())
-tanque3.get_solucao(tanque2.devolve_solucao())
-data2 = tanque3.devolve_solucao()
-print(data2)
-post = requests.post("https://test-flask-fei.herokuapp.com/secador")
-print(data2)
+@app.route("/lavagem")
+def teste():
+#    http://127.0.0.1:5000/  https:/test-flask-fei.herokuapp.com/secador
+    temp = requests.get('https://cc7261-app-modulo-decantador.herokuapp.com/')
+    data = json.loads(temp.text)
+    print(data)
+    tanque1=lavagem(1)
+    tanque2=lavagem(2)
+    tanque3=lavagem(3)
+    #pega solucao de outro codigo e envia para trata_solucao ou outro tank
+    tanque1.get_solucao(data['decantador']['solucaolavagem'])
+    tanque2.get_solucao(tanque1.devolve_solucao())
+    tanque3.get_solucao(tanque2.devolve_solucao())
+    data2 = tanque3.devolve_solucao()
+    req = requests.post('https://test-flask-fei.herokuapp.com/secador', json = data2, headers = {"Content-Type": "application/json"})
+#    req = requests.post('https://tanquesistemas.herokuapp.com/biodiesel', json = request, headers = {"Content-Type": "application/json"})
+#    r = requests.post("https:/test-flask-fei.herokuapp.com/secador")
+#    r.json(data2)
