@@ -14,7 +14,7 @@ class lavagem:
         self.solucao=quantidade*0.97
     def devolve_solucao(self):
         if self.tanque==3:
-             x =  { "solucao": self.solucao}
+             x =  { "solucaolavagem": self.solucao}
              return x
         return self.solucao
 app = Flask(__name__)
@@ -39,3 +39,6 @@ def teste():
 #    r = requests.post("https:/test-flask-fei.herokuapp.com/secador")
 #    r.json(data2)
     return data2
+def create_app():
+    global app
+    return app
