@@ -21,12 +21,12 @@ app = Flask(__name__)
 cont=0
 data2={"solucao":0}
 @app.route("/lavagem",methods=['GET'])
-def teste():
+def Envia():
 #    http://127.0.0.1:5000/  https:/test-flask-fei.herokuapp.com/secador
     global data2
     return json.dumps(data2)
 @app.route("/lavagem",methods=['POST'])
-def postagem():
+def Recebe():
     data = request.get_json()
     tanque1=lavagem(1)
     tanque2=lavagem(2)
