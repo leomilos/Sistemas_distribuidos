@@ -28,6 +28,7 @@ def Envia():
 @app.route("/lavagem",methods=['POST'])
 def Recebe():
     data = request.get_json()
+    print('recebeu:{}'.format(data) )
     tanque1=lavagem(1)
     tanque2=lavagem(2)
     tanque3=lavagem(3)
@@ -36,7 +37,7 @@ def Recebe():
     tanque2.get_solucao(tanque1.devolve_solucao())
     tanque3.get_solucao(tanque2.devolve_solucao())
     global data2
-    print(data2)
+    print('enviou:{}'.format(data))
     data2 = tanque3.devolve_solucao()
     req = requests.post('https://test-flask-fei.herokuapp.com/secador', json = data2, headers = {"Content-Type": "application/json"})
     return data2
