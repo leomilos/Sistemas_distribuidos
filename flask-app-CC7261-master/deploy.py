@@ -30,8 +30,11 @@ def Recebe():
     data = request.get_json()
     print('recebeu:{}'.format(data) )
     tanque1=lavagem(1)
+    print('lavagem1= {}'.format(tanque1.devolve_solucao()))
     tanque2=lavagem(2)
+    print('lavagem2= {}'.format(tanque2.devolve_solucao()))
     tanque3=lavagem(3)
+    print('lavagem1= {}'.format(tanque3.devolve_solucao()))
     #pega solucao de outro codigo e envia para trata_solucao ou outro tank
     tanque1.get_solucao(data['solucaolavagem'])
     tanque2.get_solucao(tanque1.devolve_solucao())
