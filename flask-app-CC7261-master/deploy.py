@@ -38,7 +38,7 @@ def Recebe():
     tanque2.get_solucao(tanque1.devolve_solucao())
     print('lavagem2= {}'.format(tanque2.devolve_solucao()))
     tanque3.get_solucao(tanque2.devolve_solucao())
-    print('lavagem1= {}'.format(tanque3.devolve_solucao()))
+    print('lavagem3= {}'.format(tanque3.devolve_solucao()))
     global data2
     print('enviou:{}'.format(data))
     data2 = tanque3.devolve_solucao()
